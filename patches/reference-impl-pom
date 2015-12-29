@@ -1,0 +1,12 @@
+diff --git a/pom.xml b/pom.xml
+index 97c61bf..6f59cad 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -77,6 +77,7 @@
+                 <module>../reference-auth</module>
+                 <module>../reference-api</module>
+                 <module>../reference-apps</module>
++                <module>../hsp-java-client</module>
+                 <module>../reference-messaging</module>
+             </modules>
+         </profile>
