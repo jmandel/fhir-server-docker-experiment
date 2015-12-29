@@ -9,7 +9,7 @@ for repo in reference-auth \
             hsp-java-client \
             hsp-tools \
             hsp-examples; do
-    git clone https://bitbucket.org/hspconsortium/$repo
+    git clone --depth 1 https://bitbucket.org/hspconsortium/$repo
 done
 
 cp patches/fhir-service-*.xml  ./reference-api/webapp/src/main/webapp/WEB-INF/
