@@ -14,4 +14,4 @@ WORKDIR /hspc
 RUN  find /hspc-build -name *.war -print0  | xargs -I{} -0 cp -v {} /hspc
 
 ADD scripts /bin/
-CMD java -jar jetty-runner.jar hsp-reference-api.war
+CMD api-server
