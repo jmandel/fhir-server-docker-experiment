@@ -3,6 +3,7 @@ version: '2'
 services:
   api:
     build: .
+    command: api-server
     ports:
      - "9002:8080"
     networks:
@@ -12,6 +13,8 @@ services:
     environment:
       MYSQL_ENDPOINT: "mysql_for_api:3306"
       MYSQL_DB: "hapi_pu"
+      SECURITY_MODE: "secured"
+      AUTH_SERVER_URL: "http://hspc-stack:9001"
   mysql_for_api:
     image: "mysql:latest"
     networks:
@@ -21,6 +24,36 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "password"
       MYSQL_DATABASE: "hapi_pu"
+  auth:
+    build: .
+    command: auth-server
+    ports:
+     - "9001:8080"
+    networks:
+     - fhir-internal
+    links:
+     - mysql_for_auth
+    environment:
+      MYSQL_ENDPOINT: "mysql_for_auth:3306"
+      ISSUER_URL: "http://hspc-stack:9001/"
+      FHIR_SERVER_URL: "http://hspc-stack:9002/data"
+      APP_SERVER_URL: "http://hspc-stack:9000/static/"
+  mysql_for_auth:
+    image: "mysql:latest"
+    networks:
+     - fhir-internal
+    volumes:
+     - auth_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "oic"
+  app:
+    build: .
+    command: app-server
+    ports:
+     - "9000:8080"
+    networks:
+     - fhir-internal
 
 volumes:
   api_data:

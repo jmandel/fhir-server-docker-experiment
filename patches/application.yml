@@ -21,7 +21,8 @@ hspc:
     api:
       security:
 #        mode: secured
-        mode: open
+#        mode: open
+        mode: ${SECURITY_MODE:open}
       oauth2:
         clientId: hspc_resource_server
         clientSecret: secret

@@ -2,4 +2,4 @@
 
 java -jar \
   jetty-runner.jar \
-  hspc-reference-api.war
+  hspc-reference-apps.war
