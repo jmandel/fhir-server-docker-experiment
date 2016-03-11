@@ -4,4 +4,4 @@ MYSQL_HOST=$MYSQL_PORT_3306_TCP_ADDR \
 MYSQL_PORT=$MYSQL_PORT_3306_TCP_PORT \
 java -jar \
   jetty-runner.jar \
-  hsp-reference-api.war
+  hspc-reference-api.war
