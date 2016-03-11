@@ -8,12 +8,10 @@ services:
     networks:
      - fhir-internal
     links:
-     - mysql_for_api:mysql
+     - mysql_for_api
     environment:
-      MYSQL_HOST_NAME: "mysql"
-      MYSQL_PORT_NUMBER: "3308"
+      MYSQL_ENDPOINT: "mysql_for_api:3306"
       MYSQL_DB: "hapi_pu"
-      MYSQL_PU: "hapi_pu"
   mysql_for_api:
     image: "mysql:latest"
     networks:

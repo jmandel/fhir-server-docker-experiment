@@ -29,10 +29,10 @@ hspc:
       fhir:
         db:
           driver: com.mysql.jdbc.Driver
-          url: jdbc:mysql://${MYSQL_HOST_NAME:mysql}:${MYSQL_PORT_NUMBER:3306}/hapi_pu?autoReconnect=true
           username: ${MYSQL_USER:root}
           password: ${MYSQL_PASS:password}
-          persistenceUnitName: ${MYSQL_PU:hapi_pu}
+          persistenceUnitName: ${MYSQL_DB:hapi_pu}
+          url: jdbc:mysql://${MYSQL_ENDPOINT:localhost:3306}/${MYSQL_DB:hapi_pu}?autoReconnect=true
         hibernate:
           dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         terminologyEndpointURL: ${TERMINOLOGY_SERVER_URL:fhir2.healthintersections.com.au/open}
