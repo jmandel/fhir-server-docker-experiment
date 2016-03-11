@@ -7,7 +7,7 @@ mysql:
    - 3306
 
 api:
-  build: ./api-server
+  build: .
   ports:
    - "9002:8080"
   environment:
