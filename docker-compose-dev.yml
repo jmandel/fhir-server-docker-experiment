@@ -1,18 +1,35 @@
-mysql:
-  image: "mysql:latest"
-  environment:
-    MYSQL_ROOT_PASSWORD: "password"
-    MYSQL_DATABASE: "hapi_pu"
-  ports:
-   - 3306
+version: '2'
 
-api:
-  build: .
-  ports:
-   - "9002:8080"
-  environment:
-    # MYSQL_HOST: "mysql"
-    MYSQL_DB: "hapi_pu"
-    MYSQL_PU: "hapi_pu"
-  links:
-    - "mysql:mysql"
+services:
+  api:
+    build: .
+    ports:
+     - "9002:8080"
+    networks:
+     - fhir-internal
+    links:
+     - mysql_for_api:mysql
+    environment:
+      MYSQL_HOST_NAME: "mysql"
+      MYSQL_PORT_NUMBER: "3308"
+      MYSQL_DB: "hapi_pu"
+      MYSQL_PU: "hapi_pu"
+  mysql_for_api:
+    image: "mysql:latest"
+    networks:
+     - fhir-internal
+    volumes:
+     - api_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "hapi_pu"
+
+volumes:
+  api_data:
+    driver: local
+  auth_data:
+    driver: local
+
+networks:
+  fhir-internal:
+    driver: bridge

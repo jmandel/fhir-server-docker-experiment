@@ -29,7 +29,7 @@ hspc:
       fhir:
         db:
           driver: com.mysql.jdbc.Driver
-          url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:hapi_pu}?autoReconnect=true
+          url: jdbc:mysql://${MYSQL_HOST_NAME:mysql}:${MYSQL_PORT_NUMBER:3306}/hapi_pu?autoReconnect=true
           username: ${MYSQL_USER:root}
           password: ${MYSQL_PASS:password}
           persistenceUnitName: ${MYSQL_PU:hapi_pu}
