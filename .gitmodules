@@ -1,0 +1,19 @@
+[submodule "reference-impl"]
+	path = reference-impl
+	url = https://bitbucket.org/hspconsortium/reference-impl
+	branch = develop
+[submodule "java-client"]
+	path = java-client
+	url = https://bitbucket.org/hspconsortium/java-client
+	branch = develop
+[submodule "reference-apps"]
+	path = reference-apps
+	url = https://bitbucket.org/hspconsortium/reference-apps
+	branch = develop
+[submodule "reference-api"]
+	path = reference-api
+	url = https://bitbucket.org/hspconsortium/reference-api
+[submodule "reference-auth"]
+	path = reference-auth
+	url = https://bitbucket.org/hspconsortium/reference-auth
+	branch = develop
