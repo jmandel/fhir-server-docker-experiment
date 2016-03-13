@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Replace with nc
+
+echo "Waiting for dataabse"
+while ! nc -z mysql_for_auth 3306; do
+  sleep 1
+done
+echo "...database ready!"
+
 java -jar \
   jetty-runner.jar \
   hspc-reference-authorization.war
